@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Collocation Practice Studio</title>
+  <style>
+    :root {
+      --bg: #121212;
+      --card: #1e1e1e;
+      --card-soft: #282228;
+      --text: #f8eef4;
+      --muted: #cdb8c4;
+      --pink: #ffb6c1;
+      --hot-pink: #ff69b4;
+      --green: #2ecc71;
+      --green-bg: rgba(46, 204, 113, 0.18);
+      --red: #ff5c7a;
+      --red-bg: rgba(255, 92, 122, 0.16);
+      --border: rgba(255, 182, 193, 0.3);
+      --shadow: 0 18px 50px rgba(255, 105, 180, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    .app {
+      width: min(100% - 32px, 800px);
+      margin: 0 auto;
+      padding: 32px 0 56px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .badge {
+      color: var(--hot-pink);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 8px 0 10px;
+      color: var(--pink);
+      font-size: clamp(2rem, 7vw, 4rem);
+      line-height: 1;
+    }
+
+    header p {
+      margin: 0 auto;
+      max-width: 620px;
+      color: var(--muted);
+    }
+
+    .tabs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 8px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .tab {
+      min-height: 44px;
+      border: 0;
+      border-radius: 10px;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .tab.active {
+      background: var(--hot-pink);
+      color: #140b11;
+    }
+
+    .panel {
+      display: none;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .panel.active {
+      display: block;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      color: var(--pink);
+      font-size: 1.45rem;
+    }
+
+    .instructions {
+      margin: 0 0 18px;
+      color: var(--muted);
+    }
+
+    .word-bank {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 14px;
+      margin-bottom: 20px;
+      border: 1px dashed var(--hot-pink);
+      border-radius: 12px;
+      background: rgba(255, 105, 180, 0.08);
+    }
+
+    .word-chip {
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: #121212;
+      color: var(--pink);
+      padding: 8px 12px;
+      cursor: grab;
+      user-select: none;
+      font-weight: 700;
+    }
+
+    .word-chip:active {
+      cursor: grabbing;
+    }
+
+    .question {
+      padding: 16px;
+      margin-bottom: 14px;
+      border: 1px solid rgba(255, 182, 193, 0.18);
+      border-radius: 12px;
+      background: var(--card-soft);
+    }
+
+    .question p {
+      margin: 0 0 10px;
+    }
+
+    input[type="text"],
+    select {
+      width: 100%;
+      min-height: 42px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #151515;
+      color: var(--text);
+      padding: 9px 11px;
+      outline: none;
+    }
+
+    input[type="text"]:focus,
+    select:focus {
+      border-color: var(--hot-pink);
+      box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.18);
+    }
+
+    input.drag-over {
+      border-color: var(--hot-pink);
+      background: rgba(255, 105, 180, 0.12);
+    }
+
+    .options {
+      display: grid;
+      gap: 8px;
+    }
+
+    .option {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      padding: 10px;
+      border: 1px solid rgba(255, 182, 193, 0.18);
+      border-radius: 10px;
+      background: #171417;
+      cursor: pointer;
+    }
+
+    .option input {
+      accent-color: var(--hot-pink);
+    }
+
+    .matching-row {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .term {
+      color: var(--pink);
+      font-weight: 800;
+    }
+
+    .check-btn {
+      width: 100%;
+      min-height: 46px;
+      margin-top: 10px;
+      border: 0;
+      border-radius: 12px;
+      background: var(--hot-pink);
+      color: #140b11;
+      cursor: pointer;
+      font-weight: 900;
+      font-size: 1rem;
+    }
+
+    .correct {
+      border-color: var(--green) !important;
+      background: var(--green-bg) !important;
+    }
+
+    .incorrect {
+      border-color: var(--red) !important;
+      background: var(--red-bg) !important;
+    }
+
+    .answer-label {
+      display: inline-block;
+      margin-top: 8px;
+      color: var(--red);
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .score {
+      margin-top: 14px;
+      color: var(--pink);
+      font-weight: 800;
+      text-align: center;
+    }
+
+    @media (max-width: 640px) {
+      .tabs,
+      .matching-row {
+        grid-template-columns: 1fr;
+      }
+
+      .panel {
+        padding: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <header>
+      <div class="badge">IELTS Education & Society</div>
+      <h1>Collocation Practice Studio</h1>
+      <p>Practice advanced essay collocations through typing, drag and drop, multiple choice, and definition matching.</p>
+    </header>
+
+    <nav class="tabs" aria-label="Exercise tabs">
+      <button class="tab active" data-tab="fill">Fill in the blanks</button>
+      <button class="tab" data-tab="choice">Multiple choice</button>
+      <button class="tab" data-tab="match">Matching</button>
+    </nav>
+
+    <section class="panel active" id="fill">
+      <h2>Fill in the blanks</h2>
+      <p class="instructions">Drag a collocation into a blank, or type the answer manually.</p>
+      <div class="word-bank" id="wordBank"></div>
+      <div id="fillQuestions"></div>
+      <button class="check-btn" data-check="fill">Check Answers</button>
+      <div class="score" id="fillScore"></div>
+    </section>
+
+    <section class="panel" id="choice">
+      <h2>Multiple choice</h2>
+      <p class="instructions">Choose the best collocation for each sentence.</p>
+      <div id="choiceQuestions"></div>
+      <button class="check-btn" data-check="choice">Check Answers</button>
+      <div class="score" id="choiceScore"></div>
+    </section>
+
+    <section class="panel" id="match">
+      <h2>Definition matching</h2>
+      <p class="instructions">Match each collocation with its definition.</p>
+      <div id="matchQuestions"></div>
+      <button class="check-btn" data-check="match">Check Answers</button>
+      <div class="score" id="matchScore"></div>
+    </section>
+  </main>
+
+  <script>
+    const fillData = [
+      {
+        sentence: "Parents help children become ________ by teaching empathy and responsibility.",
+        answer: "responsible members of society"
+      },
+      {
+        sentence: "Schools provide a ________ where students can follow routines and learn safely.",
+        answer: "structured environment"
+      },
+      {
+        sentence: "Group projects allow students to ________ and solve problems together.",
+        answer: "develop teamwork skills"
+      },
+      {
+        sentence: "Children are often shaped by their ________ from an early age.",
+        answer: "family environment"
+      },
+      {
+        sentence: "Values learned at home can ________ behaviour and decision-making.",
+        answer: "have a lasting impact on"
+      }
+    ];
+
+    const multipleChoiceData = [
+      {
+        question: "Parents can ________ by modelling honesty and respect.",
+        answer: "shape someone’s character",
+        options: ["shape someone’s character", "large class sizes", "standardized curricula", "group projects"]
+      },
+      {
+        question: "Students need opportunities to meet people with ________.",
+        answer: "diverse perspectives",
+        options: ["diverse perspectives", "individual attention", "role-modelling", "fundamental values"]
+      },
+      {
+        question: "Class discussions can help learners ________.",
+        answer: "develop social skills",
+        options: ["develop social skills", "form the foundation of", "large class sizes", "instil positive behaviours"]
+      },
+      {
+        question: "Schools use ________ to organize what students learn.",
+        answer: "standardized curricula",
+        options: ["standardized curricula", "family environment", "social values", "positive behaviours"]
+      },
+      {
+        question: "Teachers often struggle to support every child because of ________.",
+        answer: "large class sizes",
+        options: ["large class sizes", "moral development", "communication skills", "supportive family environments"]
+      },
+      {
+        question: "Parents can ________ when children face difficult choices.",
+        answer: "provide guidance",
+        options: ["provide guidance", "acquire knowledge", "cooperate with others", "shape personal values"]
+      },
+      {
+        question: "Daily conversations at home can help parents ________.",
+        answer: "instil positive behaviours",
+        options: ["instil positive behaviours", "standardized curricula", "classroom activities", "diverse perspectives"]
+      },
+      {
+        question: "Good speaking and listening abilities are examples of ________.",
+        answer: "communication skills",
+        options: ["communication skills", "family environment", "individualized support", "social values"]
+      },
+      {
+        question: "Children raised with strong support are ________ become socially aware.",
+        answer: "be more likely to",
+        options: ["be more likely to", "contribute significantly to", "form the foundation of", "be strongly influenced by"]
+      },
+      {
+        question: "Home values can ________ a child’s moral development.",
+        answer: "form the foundation of",
+        options: ["form the foundation of", "develop teamwork skills", "acquire knowledge", "cooperate with others"]
+      },
+      {
+        question: "Schools help children learn how to ________ in shared tasks.",
+        answer: "cooperate with others",
+        options: ["cooperate with others", "role-modelling", "individual attention", "fundamental values"]
+      },
+      {
+        question: "Students go to school partly to ________ across many subjects.",
+        answer: "acquire knowledge",
+        options: ["acquire knowledge", "shape personal values", "large class sizes", "positive behaviours"]
+      },
+      {
+        question: "Parents ________ children’s moral development.",
+        answer: "play a crucial role in",
+        options: ["play a crucial role in", "be more likely to", "have a lasting impact on", "contribute to society"]
+      },
+      {
+        question: "School experiences can ________ students’ academic and social growth.",
+        answer: "contribute significantly to",
+        options: ["contribute significantly to", "provide guidance", "instil positive behaviours", "role-modelling"]
+      },
+      {
+        question: "Children learn values through parental ________.",
+        answer: "role-modelling",
+        options: ["role-modelling", "classroom activities", "standardized curricula", "large class sizes"]
+      }
+    ];
+
+    const matchingData = [
+      { term: "social values", definition: "Shared beliefs about how people should behave in society." },
+      { term: "structured environment", definition: "A setting with clear routines, expectations, and support." },
+      { term: "acquire knowledge", definition: "To gain information, understanding, or learning." },
+      { term: "contribute to society", definition: "To do something useful for the wider community." },
+      { term: "classroom activities", definition: "Learning tasks that happen during lessons." },
+      { term: "group projects", definition: "Tasks completed by students working together." },
+      { term: "individual attention", definition: "Focused support given to one learner." },
+      { term: "moral development", definition: "The process of learning right, wrong, and ethical behaviour." },
+      { term: "fundamental values", definition: "Basic principles such as respect, empathy, and responsibility." },
+      { term: "individualized support", definition: "Help adapted to a specific child’s needs." },
+      { term: "supportive family environments", definition: "Home settings where children feel cared for and encouraged." },
+      { term: "be strongly influenced by", definition: "To be greatly affected or shaped by something." },
+      { term: "have a lasting impact on", definition: "To affect something for a long time." },
+      { term: "shape personal values", definition: "To influence a person’s beliefs and principles." },
+      { term: "communication skills", definition: "Abilities used to express ideas and understand others." }
+    ];
+
+    const normalize = value =>
+      value.trim().toLowerCase().replace(/[.,!?]/g, "").replace(/\s+/g, " ");
+
+    const shuffle = array => [...array].sort(() => Math.random() - 0.5);
+
+    function clearFeedback(scope) {
+      scope.querySelectorAll(".correct, .incorrect").forEach(el => {
+        el.classList.remove("correct", "incorrect");
+      });
+      scope.querySelectorAll(".answer-label").forEach(el => el.remove());
+    }
+
+    function addAnswerLabel(element, answer) {
+      const label = document.createElement("span");
+      label.className = "answer-label";
+      label.textContent = `Correct answer: ${answer}`;
+      element.insertAdjacentElement("afterend", label);
+    }
+
+    function renderFillExercise() {
+      const bank = document.querySelector("#wordBank");
+      const container = document.querySelector("#fillQuestions");
+
+      bank.innerHTML = shuffle(fillData.map(item => item.answer))
+        .map(answer => `<span class="word-chip" draggable="true" data-answer="${answer}">${answer}</span>`)
+        .join("");
+
+      container.innerHTML = fillData.map((item, index) => `
+        <div class="question">
+          <p>${index + 1}. ${item.sentence}</p>
+          <input type="text" data-answer="${item.answer}" aria-label="Blank ${index + 1}" />
+        </div>
+      `).join("");
+
+      document.querySelectorAll(".word-chip").forEach(chip => {
+        chip.addEventListener("dragstart", event => {
+          event.dataTransfer.setData("text/plain", chip.dataset.answer);
+        });
+      });
+
+      document.querySelectorAll("#fillQuestions input").forEach(input => {
+        input.addEventListener("dragover", event => {
+          event.preventDefault();
+          input.classList.add("drag-over");
+        });
+
+        input.addEventListener("dragleave", () => {
+          input.classList.remove("drag-over");
+        });
+
+        input.addEventListener("drop", event => {
+          event.preventDefault();
+          input.value = event.dataTransfer.getData("text/plain");
+          input.classList.remove("drag-over");
+        });
+      });
+    }
+
+    function renderMultipleChoice() {
+      const container = document.querySelector("#choiceQuestions");
+
+      container.innerHTML = multipleChoiceData.map((item, index) => `
+        <div class="question" data-answer="${item.answer}">
+          <p>${index + 1}. ${item.question}</p>
+          <div class="options">
+            ${shuffle(item.options).map(option => `
+              <label class="option">
+                <input type="radio" name="mc-${index}" value="${option}" />
+                <span>${option}</span>
+              </label>
+            `).join("")}
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function renderMatching() {
+      const container = document.querySelector("#matchQuestions");
+      const definitions = shuffle(matchingData.map(item => item.definition));
+
+      container.innerHTML = matchingData.map((item, index) => `
+        <div class="question matching-row">
+          <div class="term">${index + 1}. ${item.term}</div>
+          <select data-answer="${item.definition}" aria-label="Definition for ${item.term}">
+            <option value="">Choose a definition</option>
+            ${definitions.map(definition => `<option value="${definition}">${definition}</option>`).join("")}
+          </select>
+        </div>
+      `).join("");
+    }
+
+    function checkFill() {
+      const panel = document.querySelector("#fill");
+      clearFeedback(panel);
+
+      let score = 0;
+      const inputs = panel.querySelectorAll("input");
+
+      inputs.forEach(input => {
+        const isCorrect = normalize(input.value) === normalize(input.dataset.answer);
+        input.classList.add(isCorrect ? "correct" : "incorrect");
+        if (isCorrect) score++;
+        else addAnswerLabel(input, input.dataset.answer);
+      });
+
+      document.querySelector("#fillScore").textContent = `Score: ${score}/${inputs.length}`;
+    }
+
+    function checkMultipleChoice() {
+      const panel = document.querySelector("#choice");
+      clearFeedback(panel);
+
+      let score = 0;
+      const questions = panel.querySelectorAll(".question");
+
+      questions.forEach((question, index) => {
+        const selected = question.querySelector(`input[name="mc-${index}"]:checked`);
+        const selectedLabel = selected ? selected.closest(".option") : null;
+        const isCorrect = selected && selected.value === question.dataset.answer;
+
+        if (isCorrect) {
+          selectedLabel.classList.add("correct");
+          score++;
+        } else {
+          if (selectedLabel) selectedLabel.classList.add("incorrect");
+          addAnswerLabel(question, question.dataset.answer);
+        }
+      });
+
+      document.querySelector("#choiceScore").textContent = `Score: ${score}/${questions.length}`;
+    }
+
+    function checkMatching() {
+      const panel = document.querySelector("#match");
+      clearFeedback(panel);
+
+      let score = 0;
+      const selects = panel.querySelectorAll("select");
+
+      selects.forEach(select => {
+        const isCorrect = select.value === select.dataset.answer;
+        select.classList.add(isCorrect ? "correct" : "incorrect");
+        if (isCorrect) score++;
+        else addAnswerLabel(select, select.dataset.answer);
+      });
+
+      document.querySelector("#matchScore").textContent = `Score: ${score}/${selects.length}`;
+    }
+
+    document.querySelectorAll(".tab").forEach(tab => {
+      tab.addEventListener("click", () => {
+        document.querySelectorAll(".tab").forEach(button => button.classList.remove("active"));
+        document.querySelectorAll(".panel").forEach(panel => panel.classList.remove("active"));
+
+        tab.classList.add("active");
+        document.querySelector(`#${tab.dataset.tab}`).classList.add("active");
+      });
+    });
+
+    document.querySelector('[data-check="fill"]').addEventListener("click", checkFill);
+    document.querySelector('[data-check="choice"]').addEventListener("click", checkMultipleChoice);
+    document.querySelector('[data-check="match"]').addEventListener("click", checkMatching);
+
+    renderFillExercise();
+    renderMultipleChoice();
+    renderMatching();
+  </script>
+</body>
+</html>
