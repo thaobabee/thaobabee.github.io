@@ -1,142 +1,185 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Writing Practice</title>
-<style>
-body { font-family: Arial; padding: 20px; line-height: 1.6; }
-h2 { color: #2c3e50; }
-.section { margin-bottom: 30px; }
-.word-bank { background: #f4f4f4; padding: 10px; border-radius: 8px; }
-input { padding: 5px; margin: 5px; }
-.correct { border: 2px solid green; background: #eaffea; }
-.wrong { border: 2px solid red; background: #ffeaea; }
-.answer { color: blue; font-size: 14px; }
-button { margin-top: 10px; padding: 8px 12px; cursor: pointer; }
-.hidden { display: none; }
-</style>
-</head>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Collocation Practice Studio</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="topbar" aria-label="Main navigation">
+        <a class="brand" href="#top" aria-label="Collocation Practice Studio home">
+          <span class="brand-mark">C</span>
+          <span>Collocation Studio</span>
+        </a>
+        <div class="nav-links">
+          <a href="#essay">Essay</a>
+          <a href="#collocations">Collocations</a>
+          <a href="#practice">Practice</a>
+        </div>
+      </nav>
 
-<body>
+      <section class="hero" id="top">
+        <div class="hero-copy">
+          <p class="eyebrow">Education & Society</p>
+          <h1>Practice high-band collocations in your own pink-black study space.</h1>
+          <p>
+            Read the sample essay, notice the language patterns, then test yourself with
+            fill-in-the-blank, rewriting, multiple choice, and matching activities.
+          </p>
+          <a class="primary-button" href="#practice">Start practicing</a>
+        </div>
+        <div class="hero-panel" aria-label="Study progress preview">
+          <div>
+            <span class="stat-number">33</span>
+            <span class="stat-label">collocations</span>
+          </div>
+          <div>
+            <span class="stat-number">4</span>
+            <span class="stat-label">activities</span>
+          </div>
+          <div>
+            <span class="stat-number">IELTS</span>
+            <span class="stat-label">essay language</span>
+          </div>
+        </div>
+      </section>
+    </header>
 
-<h1>📘 Writing Vocabulary Practice</h1>
+    <main>
+      <section class="section essay-section" id="essay">
+        <div class="section-heading">
+          <p class="eyebrow">Sample Writing</p>
+          <h2>High-band essay</h2>
+        </div>
+        <article class="essay-card">
+          <p>
+            Some people argue that parents should be responsible for teaching children
+            how to become <mark>responsible members of society</mark>, while others
+            believe that schools are better suited for this role. Although educational
+            institutions play an important part in children’s development, I believe
+            that parents have a more significant influence on
+            <mark>shaping their character</mark> and <mark>social values</mark>.
+          </p>
+          <p>
+            On the one hand, schools provide a <mark>structured environment</mark> in
+            which children can <mark>acquire essential knowledge</mark> and
+            <mark>social skills</mark>. Through <mark>standardized curricula</mark> and
+            interaction with peers, students are exposed to
+            <mark>diverse perspectives</mark> and learn how to
+            <mark>cooperate with others</mark>. For example,
+            <mark>classroom activities</mark> such as <mark>group projects</mark> and
+            discussions help students <mark>develop teamwork</mark> and
+            <mark>communication skills</mark>, which are necessary for
+            <mark>contributing to society</mark>. However, schools often face
+            limitations, such as <mark>large class sizes</mark> and limited
+            <mark>individual attention</mark>, which can reduce their effectiveness in
+            <mark>shaping each child’s personal values</mark>.
+          </p>
+          <p>
+            On the other hand, parents <mark>play a crucial role in</mark> guiding
+            children’s <mark>moral development</mark>. From an early age, children are
+            <mark>strongly influenced by</mark> their <mark>family environment</mark>,
+            where they learn <mark>fundamental values</mark> such as empathy,
+            responsibility, and respect. Unlike schools, parents are able to
+            <mark>provide consistent guidance</mark> and
+            <mark>individualized support</mark> tailored to their child’s needs. For
+            instance, storytelling, daily interactions, and parental
+            <mark>role-modelling</mark> can <mark>instil positive behaviours</mark> and
+            attitudes. As a result, children raised in
+            <mark>supportive family environments</mark> are
+            <mark>more likely to</mark> develop into responsible and socially aware
+            individuals.
+          </p>
+          <p>
+            In my view, while schools <mark>contribute significantly to</mark> academic
+            and social development, the role of parents is more fundamental in shaping
+            a child’s character. This is because values learned at home tend to
+            <mark>have a lasting impact on</mark> behaviour and decision-making. In
+            conclusion, although both schools and parents play important roles in
+            educating children to become good members of society, I believe that
+            parental influence is more decisive, as it
+            <mark>forms the foundation of</mark> a child’s moral and social
+            development.
+          </p>
+        </article>
+      </section>
 
-<div class="section">
-<h2>📚 Collocations</h2>
-<div class="word-bank">
-play a crucial role in, structured environment, strongly influenced by, develop teamwork skills, instil values, supportive environment
-</div>
-</div>
+      <section class="section" id="collocations">
+        <div class="section-heading">
+          <p class="eyebrow">Language Bank</p>
+          <h2>Collocations to learn</h2>
+        </div>
+        <div class="collocation-grid" id="collocationGrid"></div>
+      </section>
 
----
+      <section class="section practice-section" id="practice">
+        <div class="section-heading">
+          <p class="eyebrow">Interactive Practice</p>
+          <h2>Activities</h2>
+        </div>
 
-<div class="section">
-<h2>🧠 Exercise 1</h2>
+        <div class="activity-tabs" role="tablist" aria-label="Practice activities">
+          <button class="tab-button active" type="button" data-tab="fill" role="tab" aria-selected="true">Fill gaps</button>
+          <button class="tab-button" type="button" data-tab="rewrite" role="tab" aria-selected="false">Rewrite</button>
+          <button class="tab-button" type="button" data-tab="choice" role="tab" aria-selected="false">Multiple choice</button>
+          <button class="tab-button" type="button" data-tab="match" role="tab" aria-selected="false">Match</button>
+        </div>
 
-<p>Parents play a <input id="q1"> in shaping children’s behaviour. 
-<span class="answer hidden" id="a1">(crucial role)</span></p>
+        <section class="activity-panel active" id="fill" aria-labelledby="fill-title">
+          <div class="activity-header">
+            <h3 id="fill-title">Exercise 1: Fill in the gaps</h3>
+            <button class="ghost-button" type="button" data-check="fill">Check answers</button>
+          </div>
+          <div class="answer-box">
+            <p>Answer box</p>
+            <div class="answer-list" aria-label="Possible answers for fill in the gaps">
+              <span>crucial role</span>
+              <span>structured environment</span>
+              <span>influenced by</span>
+              <span>develop teamwork skills</span>
+              <span>large class sizes</span>
+              <span>diverse perspectives</span>
+            </div>
+          </div>
+          <div class="questions" data-activity="fill"></div>
+          <p class="feedback" data-feedback="fill" aria-live="polite"></p>
+        </section>
 
-<p>Schools provide a <input id="q2"> where students can develop social skills. 
-<span class="answer hidden" id="a2">(structured environment)</span></p>
+        <section class="activity-panel" id="rewrite" aria-labelledby="rewrite-title">
+          <div class="activity-header">
+            <h3 id="rewrite-title">Exercise 2: Rewrite with the collocation</h3>
+            <button class="ghost-button" type="button" data-check="rewrite">Check answers</button>
+          </div>
+          <div class="questions" data-activity="rewrite"></div>
+          <p class="feedback" data-feedback="rewrite" aria-live="polite"></p>
+        </section>
 
-<p>Children are strongly <input id="q3"> their family environment. 
-<span class="answer hidden" id="a3">(influenced by)</span></p>
+        <section class="activity-panel" id="choice" aria-labelledby="choice-title">
+          <div class="activity-header">
+            <h3 id="choice-title">Exercise 3: Multiple choice</h3>
+            <button class="ghost-button" type="button" data-check="choice">Check answers</button>
+          </div>
+          <div class="questions" data-activity="choice"></div>
+          <p class="feedback" data-feedback="choice" aria-live="polite"></p>
+        </section>
 
-<p>Group work helps students develop <input id="q4"> and communication skills. 
-<span class="answer hidden" id="a4">(teamwork skills)</span></p>
+        <section class="activity-panel" id="match" aria-labelledby="match-title">
+          <div class="activity-header">
+            <h3 id="match-title">Exercise 4: Matching</h3>
+            <button class="ghost-button" type="button" data-check="match">Check matches</button>
+          </div>
+          <div class="matching-board" data-activity="match"></div>
+          <p class="feedback" data-feedback="match" aria-live="polite"></p>
+        </section>
+      </section>
+    </main>
 
-<button onclick="checkE1()">Check Answers</button>
-</div>
+    <footer class="site-footer">
+      <p>Built for focused essay practice, one strong phrase at a time.</p>
+    </footer>
 
----
-
-<div class="section">
-<h2>📝 Exercise 4: Essay Practice</h2>
-
-<div class="word-bank">
-play a crucial role in | structured environment | strongly influenced by | develop teamwork skills | instil values | supportive environment
-</div>
-
-<p>
-Parents <input id="q5"> shaping children’s character. 
-<span class="answer hidden" id="a5">(play a crucial role in)</span><br>
-
-Schools provide a <input id="q6"> where students can learn effectively. 
-<span class="answer hidden" id="a6">(structured environment)</span><br>
-
-Children are often <input id="q7"> their family background. 
-<span class="answer hidden" id="a7">(strongly influenced by)</span><br>
-
-Activities help students <input id="q8">. 
-<span class="answer hidden" id="a8">(develop teamwork skills)</span><br>
-
-Parents help <input id="q9"> in children. 
-<span class="answer hidden" id="a9">(instil values)</span><br>
-
-A <input id="q10"> helps children grow well. 
-<span class="answer hidden" id="a10">(supportive environment)</span>
-</p>
-
-<button onclick="checkE4()">Check Answers</button>
-</div>
-
----
-
-<div class="section">
-<h2>📖 Sample Essay</h2>
-
-<button onclick="toggleEssay()">Show / Hide Essay</button>
-
-<p id="essay" class="hidden">
-Some people argue that parents should be responsible for teaching children how to become responsible members of society, while others believe that schools are better suited for this role. Although educational institutions play an important part in children’s development, I believe that parents have a more significant influence on shaping their character and social values. <br><br>
-  
-On the one hand, schools provide a structured environment in which children can acquire essential knowledge and social skills. Through standardized curricula and interaction with peers, students are exposed to diverse perspectives and learn how to cooperate with others. For example, classroom activities such as group projects and discussions help students develop teamwork and communication skills, which are necessary for contributing to society. However, schools often face limitations, such as large class sizes and limited individual attention, which can reduce their effectiveness in shaping each child’s personal values.<br><br>
-  
-On the other hand, parents play a crucial role in guiding children’s moral development. From an early age, children are strongly influenced by their family environment, where they learn fundamental values such as empathy, responsibility, and respect. Unlike schools, parents are able to provide consistent guidance and individualized support tailored to their child’s needs. For instance, storytelling, daily interactions, and parental role-modelling can instil positive behaviours and attitudes. As a result, children raised in supportive family environments are more likely to develop into responsible and socially aware individuals.<br><br>
- 
-In my view, while schools contribute significantly to academic and social development, the role of parents is more fundamental in shaping a child’s character. This is because values learned at home tend to have a lasting impact on behaviour and decision-making.<br><br>
-
-In conclusion, although both schools and parents play important roles in educating children to become good members of society, I believe that parental influence is more decisive, as it forms the foundation of a child’s moral and social development.<br><br>
-
-</p>
-</div>
-
----
-
-<script>
-function check(inputId, correctAnswer, answerId) {
-let input = document.getElementById(inputId);
-let answer = document.getElementById(answerId);
-
-if (input.value.toLowerCase().includes(correctAnswer)) {
-input.className = "correct";
-} else {
-input.className = "wrong";
-answer.classList.remove("hidden");
-}
-}
-
-function checkE1() {
-check("q1","crucial role","a1");
-check("q2","structured environment","a2");
-check("q3","influenced by","a3");
-check("q4","teamwork skills","a4");
-}
-
-function checkE4() {
-check("q5","play a crucial role","a5");
-check("q6","structured environment","a6");
-check("q7","strongly influenced by","a7");
-check("q8","develop teamwork skills","a8");
-check("q9","instil values","a9");
-check("q10","supportive environment","a10");
-}
-
-function toggleEssay() {
-let essay = document.getElementById("essay");
-essay.classList.toggle("hidden");
-}
-</script>
-
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
