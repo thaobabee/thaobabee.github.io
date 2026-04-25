@@ -481,3 +481,72 @@ mark {
     width: 100%;
   }
 }
+
+/* Drag and Drop & Input Styles */
+.draggable-item {
+  display: inline-block;
+  padding: 6px 12px;
+  margin: 4px;
+  background-color: #ffb6c1; /* Pink theme */
+  color: #000;
+  border-radius: 4px;
+  cursor: grab;
+  user-select: none;
+  font-weight: 500;
+}
+
+.draggable-item:active {
+  cursor: grabbing;
+  opacity: 0.8;
+}
+
+.drop-input {
+  border: 2px dashed #ccc;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 1rem;
+  width: 250px;
+  transition: border-color 0.2s;
+}
+
+.drop-input.drag-over {
+  border-color: #ffb6c1;
+  background-color: #fff0f5;
+}
+
+/* Validation Feedback */
+.correct {
+  border-color: #28a745 !important;
+  background-color: #e6f8ea !important;
+}
+
+.incorrect {
+  border-color: #dc3545 !important;
+  background-color: #fae8ea !important;
+}
+
+.correction-label {
+  color: #dc3545;
+  font-weight: bold;
+  margin-left: 8px;
+  font-size: 0.9em;
+}
+
+.question-row {
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+/* Matching Grid */
+.match-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+select.match-select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
