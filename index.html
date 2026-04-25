@@ -2,16 +2,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Vocabulary Practice</title>
+<title>Writing Practice</title>
 <style>
 body { font-family: Arial; padding: 20px; line-height: 1.6; }
 h2 { color: #2c3e50; }
 .section { margin-bottom: 30px; }
 .word-bank { background: #f4f4f4; padding: 10px; border-radius: 8px; }
-input, textarea { margin: 5px 0; padding: 5px; width: 100%; }
-button { padding: 10px 15px; margin-top: 10px; cursor: pointer; }
-.correct { color: green; }
-.wrong { color: red; }
+input { padding: 5px; margin: 5px; }
+.correct { border: 2px solid green; background: #eaffea; }
+.wrong { border: 2px solid red; background: #ffeaea; }
+.answer { color: blue; font-size: 14px; }
+button { margin-top: 10px; padding: 8px 12px; cursor: pointer; }
+.hidden { display: none; }
 </style>
 </head>
 
@@ -21,113 +23,115 @@ button { padding: 10px 15px; margin-top: 10px; cursor: pointer; }
 
 <div class="section">
 <h2>📚 Collocations</h2>
-
 <div class="word-bank">
-<b>Education & Society:</b><br>
-responsible members of society, shape someone’s character, social values, structured environment, acquire knowledge, develop social skills, diverse perspectives, cooperate with others, contribute to society<br><br>
-
-<b>School context:</b><br>
-standardized curricula, classroom activities, group projects, develop teamwork skills, communication skills, large class sizes, individual attention, shape personal values<br><br>
-
-<b>Family influence:</b><br>
-moral development, family environment, fundamental values, provide guidance, individualized support, role-modelling, instil values, positive behaviours, supportive environment<br><br>
-
-<b>Argument language:</b><br>
-play a crucial role in, be strongly influenced by, be more likely to, have a lasting impact on, contribute significantly to, form the foundation of
+play a crucial role in, structured environment, strongly influenced by, develop teamwork skills, instil values, supportive environment
 </div>
 </div>
 
 ---
 
 <div class="section">
-<h2>🧠 Exercise 1: Fill in the gaps</h2>
+<h2>🧠 Exercise 1</h2>
 
-<p>Parents play a <input id="e1q1"> in shaping children’s behaviour.</p>
-<p>Schools provide a <input id="e1q2"> where students can develop social skills.</p>
-<p>Children are strongly <input id="e1q3"> their family environment.</p>
-<p>Group work helps students develop <input id="e1q4"> and communication skills.</p>
+<p>Parents play a <input id="q1"> in shaping children’s behaviour. 
+<span class="answer hidden" id="a1">(crucial role)</span></p>
 
-<button onclick="checkExercise1()">Check Answers</button>
-<p id="result1"></p>
+<p>Schools provide a <input id="q2"> where students can develop social skills. 
+<span class="answer hidden" id="a2">(structured environment)</span></p>
+
+<p>Children are strongly <input id="q3"> their family environment. 
+<span class="answer hidden" id="a3">(influenced by)</span></p>
+
+<p>Group work helps students develop <input id="q4"> and communication skills. 
+<span class="answer hidden" id="a4">(teamwork skills)</span></p>
+
+<button onclick="checkE1()">Check Answers</button>
 </div>
 
 ---
 
 <div class="section">
-<h2>✍️ Exercise 2: Rewrite</h2>
-
-<p>Rewrite this sentence using better collocations:</p>
-<p><i>“remunerating learners is more plausible”</i></p>
-
-<textarea id="rewriteBox" rows="3"></textarea>
-<p><i>Suggested answer:</i> rewarding students who show improvement is more beneficial</p>
-</div>
-
----
-
-<div class="section">
-<h2>✍️ Exercise 3: Mini-paragraph</h2>
-
-<p>Write a short paragraph using at least 5 collocations:</p>
-
-<ul>
-<li>play a crucial role</li>
-<li>develop social skills</li>
-<li>be more likely to</li>
-<li>instil values</li>
-<li>supportive environment</li>
-</ul>
-
-<textarea rows="5"></textarea>
-</div>
-
----
-
-<div class="section">
-<h2>📝 Exercise 4: Fill-in-the-blank Essay</h2>
+<h2>📝 Exercise 4: Essay Practice</h2>
 
 <div class="word-bank">
 play a crucial role in | structured environment | strongly influenced by | develop teamwork skills | instil values | supportive environment
 </div>
 
 <p>
-Parents <input id="e4q1"> shaping children’s character.  
-Schools provide a <input id="e4q2"> where students can learn effectively.  
-Children are often <input id="e4q3"> their family background.  
-Activities like group work help students <input id="e4q4">.  
-Parents also help <input id="e4q5"> in their children.  
-A <input id="e4q6"> helps children grow into responsible individuals.
+Parents <input id="q5"> shaping children’s character. 
+<span class="answer hidden" id="a5">(play a crucial role in)</span><br>
+
+Schools provide a <input id="q6"> where students can learn effectively. 
+<span class="answer hidden" id="a6">(structured environment)</span><br>
+
+Children are often <input id="q7"> their family background. 
+<span class="answer hidden" id="a7">(strongly influenced by)</span><br>
+
+Activities help students <input id="q8">. 
+<span class="answer hidden" id="a8">(develop teamwork skills)</span><br>
+
+Parents help <input id="q9"> in children. 
+<span class="answer hidden" id="a9">(instil values)</span><br>
+
+A <input id="q10"> helps children grow well. 
+<span class="answer hidden" id="a10">(supportive environment)</span>
 </p>
 
-<button onclick="checkExercise4()">Check Answers</button>
-<p id="result4"></p>
+<button onclick="checkE4()">Check Answers</button>
+</div>
+
+---
+
+<div class="section">
+<h2>📖 Sample Essay</h2>
+
+<button onclick="toggleEssay()">Show / Hide Essay</button>
+
+<p id="essay" class="hidden">
+Some people argue that parents should be responsible for teaching children how to become responsible members of society, while others believe that schools are better suited for this role. Although educational institutions play an important part in children’s development, I believe that parents have a more significant influence on shaping their character and social values. <br><br>
+
+On the one hand, schools provide a structured environment in which children can acquire essential knowledge and social skills. Through standardized curricula and interaction with peers, students are exposed to diverse perspectives and learn how to cooperate with others. <br><br>
+
+On the other hand, parents play a crucial role in guiding children’s moral development. From an early age, children are strongly influenced by their family environment, where they learn fundamental values such as empathy, responsibility, and respect. <br><br>
+
+In conclusion, although both schools and parents play important roles, parental influence is more decisive as it forms the foundation of a child’s development.
+</p>
 </div>
 
 ---
 
 <script>
-function checkExercise1() {
-let score = 0;
+function check(inputId, correctAnswer, answerId) {
+let input = document.getElementById(inputId);
+let answer = document.getElementById(answerId);
 
-if (document.getElementById("e1q1").value.includes("crucial role")) score++;
-if (document.getElementById("e1q2").value.includes("structured environment")) score++;
-if (document.getElementById("e1q3").value.includes("influenced by")) score++;
-if (document.getElementById("e1q4").value.includes("teamwork skills")) score++;
-
-document.getElementById("result1").innerHTML = "Score: " + score + "/4";
+if (input.value.toLowerCase().includes(correctAnswer)) {
+input.className = "correct";
+} else {
+input.className = "wrong";
+answer.classList.remove("hidden");
+}
 }
 
-function checkExercise4() {
-let score = 0;
+function checkE1() {
+check("q1","crucial role","a1");
+check("q2","structured environment","a2");
+check("q3","influenced by","a3");
+check("q4","teamwork skills","a4");
+}
 
-if (document.getElementById("e4q1").value.includes("play a crucial role")) score++;
-if (document.getElementById("e4q2").value.includes("structured environment")) score++;
-if (document.getElementById("e4q3").value.includes("strongly influenced by")) score++;
-if (document.getElementById("e4q4").value.includes("develop teamwork skills")) score++;
-if (document.getElementById("e4q5").value.includes("instil values")) score++;
-if (document.getElementById("e4q6").value.includes("supportive environment")) score++;
+function checkE4() {
+check("q5","play a crucial role","a5");
+check("q6","structured environment","a6");
+check("q7","strongly influenced by","a7");
+check("q8","develop teamwork skills","a8");
+check("q9","instil values","a9");
+check("q10","supportive environment","a10");
+}
 
-document.getElementById("result4").innerHTML = "Score: " + score + "/6";
+function toggleEssay() {
+let essay = document.getElementById("essay");
+essay.classList.toggle("hidden");
 }
 </script>
 
