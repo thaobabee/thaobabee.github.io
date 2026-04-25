@@ -1,185 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Collocation Practice Studio</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <header class="site-header">
-      <nav class="topbar" aria-label="Main navigation">
-        <a class="brand" href="#top" aria-label="Collocation Practice Studio home">
-          <span class="brand-mark">C</span>
-          <span>Collocation Studio</span>
-        </a>
-        <div class="nav-links">
-          <a href="#essay">Essay</a>
-          <a href="#collocations">Collocations</a>
-          <a href="#practice">Practice</a>
-        </div>
-      </nav>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Collocation Practice Studio</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="topbar" aria-label="Main navigation">
+      <a class="brand" href="#top">
+        <span class="brand-mark">C</span>
+        <span>Collocation Studio</span>
+      </a>
+    </nav>
+    <section class="hero" id="top">
+      <div class="hero-copy">
+        <p class="eyebrow">Education & Society</p>
+        <h1>Practice high-band collocations.</h1>
+        <p>Drag and drop, or type directly. Check your answers and learn from corrections.</p>
+      </div>
+    </section>
+  </header>
 
-      <section class="hero" id="top">
-        <div class="hero-copy">
-          <p class="eyebrow">Education & Society</p>
-          <h1>Practice high-band collocations in your own pink-black study space.</h1>
-          <p>
-            Read the sample essay, notice the language patterns, then test yourself with
-            fill-in-the-blank, rewriting, multiple choice, and matching activities.
-          </p>
-          <a class="primary-button" href="#practice">Start practicing</a>
-        </div>
-        <div class="hero-panel" aria-label="Study progress preview">
-          <div>
-            <span class="stat-number">33</span>
-            <span class="stat-label">collocations</span>
-          </div>
-          <div>
-            <span class="stat-number">4</span>
-            <span class="stat-label">activities</span>
-          </div>
-          <div>
-            <span class="stat-number">IELTS</span>
-            <span class="stat-label">essay language</span>
-          </div>
-        </div>
-      </section>
-    </header>
+  <main>
+    <section class="section practice-section" id="practice">
+      <div class="activity-tabs" role="tablist">
+        <button class="tab-button active" type="button" data-tab="fill">Fill gaps</button>
+        <button class="tab-button" type="button" data-tab="choice">Multiple choice</button>
+        <button class="tab-button" type="button" data-tab="match">Match</button>
+      </div>
 
-    <main>
-      <section class="section essay-section" id="essay">
-        <div class="section-heading">
-          <p class="eyebrow">Sample Writing</p>
-          <h2>High-band essay</h2>
+      <section class="activity-panel active" id="fill">
+        <div class="activity-header">
+          <h3>Exercise 1: Fill in the gaps</h3>
+          <button class="ghost-button check-btn" data-target="fill">Check & Correct</button>
         </div>
-        <article class="essay-card">
-          <p>
-            Some people argue that parents should be responsible for teaching children
-            how to become <mark>responsible members of society</mark>, while others
-            believe that schools are better suited for this role. Although educational
-            institutions play an important part in children’s development, I believe
-            that parents have a more significant influence on
-            <mark>shaping their character</mark> and <mark>social values</mark>.
-          </p>
-          <p>
-            On the one hand, schools provide a <mark>structured environment</mark> in
-            which children can <mark>acquire essential knowledge</mark> and
-            <mark>social skills</mark>. Through <mark>standardized curricula</mark> and
-            interaction with peers, students are exposed to
-            <mark>diverse perspectives</mark> and learn how to
-            <mark>cooperate with others</mark>. For example,
-            <mark>classroom activities</mark> such as <mark>group projects</mark> and
-            discussions help students <mark>develop teamwork</mark> and
-            <mark>communication skills</mark>, which are necessary for
-            <mark>contributing to society</mark>. However, schools often face
-            limitations, such as <mark>large class sizes</mark> and limited
-            <mark>individual attention</mark>, which can reduce their effectiveness in
-            <mark>shaping each child’s personal values</mark>.
-          </p>
-          <p>
-            On the other hand, parents <mark>play a crucial role in</mark> guiding
-            children’s <mark>moral development</mark>. From an early age, children are
-            <mark>strongly influenced by</mark> their <mark>family environment</mark>,
-            where they learn <mark>fundamental values</mark> such as empathy,
-            responsibility, and respect. Unlike schools, parents are able to
-            <mark>provide consistent guidance</mark> and
-            <mark>individualized support</mark> tailored to their child’s needs. For
-            instance, storytelling, daily interactions, and parental
-            <mark>role-modelling</mark> can <mark>instil positive behaviours</mark> and
-            attitudes. As a result, children raised in
-            <mark>supportive family environments</mark> are
-            <mark>more likely to</mark> develop into responsible and socially aware
-            individuals.
-          </p>
-          <p>
-            In my view, while schools <mark>contribute significantly to</mark> academic
-            and social development, the role of parents is more fundamental in shaping
-            a child’s character. This is because values learned at home tend to
-            <mark>have a lasting impact on</mark> behaviour and decision-making. In
-            conclusion, although both schools and parents play important roles in
-            educating children to become good members of society, I believe that
-            parental influence is more decisive, as it
-            <mark>forms the foundation of</mark> a child’s moral and social
-            development.
-          </p>
-        </article>
-      </section>
-
-      <section class="section" id="collocations">
-        <div class="section-heading">
-          <p class="eyebrow">Language Bank</p>
-          <h2>Collocations to learn</h2>
-        </div>
-        <div class="collocation-grid" id="collocationGrid"></div>
-      </section>
-
-      <section class="section practice-section" id="practice">
-        <div class="section-heading">
-          <p class="eyebrow">Interactive Practice</p>
-          <h2>Activities</h2>
-        </div>
-
-        <div class="activity-tabs" role="tablist" aria-label="Practice activities">
-          <button class="tab-button active" type="button" data-tab="fill" role="tab" aria-selected="true">Fill gaps</button>
-          <button class="tab-button" type="button" data-tab="rewrite" role="tab" aria-selected="false">Rewrite</button>
-          <button class="tab-button" type="button" data-tab="choice" role="tab" aria-selected="false">Multiple choice</button>
-          <button class="tab-button" type="button" data-tab="match" role="tab" aria-selected="false">Match</button>
-        </div>
-
-        <section class="activity-panel active" id="fill" aria-labelledby="fill-title">
-          <div class="activity-header">
-            <h3 id="fill-title">Exercise 1: Fill in the gaps</h3>
-            <button class="ghost-button" type="button" data-check="fill">Check answers</button>
-          </div>
-          <div class="answer-box">
-            <p>Answer box</p>
-            <div class="answer-list" aria-label="Possible answers for fill in the gaps">
-              <span>crucial role</span>
-              <span>structured environment</span>
-              <span>influenced by</span>
-              <span>develop teamwork skills</span>
-              <span>large class sizes</span>
-              <span>diverse perspectives</span>
+        <div class="answer-box">
+          <p><strong>Word Bank</strong> (Drag to the blanks or type directly)</p>
+          <div class="answer-list" id="draggable-bank">
             </div>
-          </div>
-          <div class="questions" data-activity="fill"></div>
-          <p class="feedback" data-feedback="fill" aria-live="polite"></p>
-        </section>
-
-        <section class="activity-panel" id="rewrite" aria-labelledby="rewrite-title">
-          <div class="activity-header">
-            <h3 id="rewrite-title">Exercise 2: Rewrite with the collocation</h3>
-            <button class="ghost-button" type="button" data-check="rewrite">Check answers</button>
-          </div>
-          <div class="questions" data-activity="rewrite"></div>
-          <p class="feedback" data-feedback="rewrite" aria-live="polite"></p>
-        </section>
-
-        <section class="activity-panel" id="choice" aria-labelledby="choice-title">
-          <div class="activity-header">
-            <h3 id="choice-title">Exercise 3: Multiple choice</h3>
-            <button class="ghost-button" type="button" data-check="choice">Check answers</button>
-          </div>
-          <div class="questions" data-activity="choice"></div>
-          <p class="feedback" data-feedback="choice" aria-live="polite"></p>
-        </section>
-
-        <section class="activity-panel" id="match" aria-labelledby="match-title">
-          <div class="activity-header">
-            <h3 id="match-title">Exercise 4: Matching</h3>
-            <button class="ghost-button" type="button" data-check="match">Check matches</button>
-          </div>
-          <div class="matching-board" data-activity="match"></div>
-          <p class="feedback" data-feedback="match" aria-live="polite"></p>
-        </section>
+        </div>
+        <div class="questions" id="fill-questions"></div>
       </section>
-    </main>
 
-    <footer class="site-footer">
-      <p>Built for focused essay practice, one strong phrase at a time.</p>
-    </footer>
+      <section class="activity-panel" id="choice">
+        <div class="activity-header">
+          <h3>Exercise 2: Multiple choice (15 Questions)</h3>
+          <button class="ghost-button check-btn" data-target="choice">Check & Correct</button>
+        </div>
+        <div class="questions" id="choice-questions"></div>
+      </section>
 
-    <script src="script.js"></script>
-  </body>
+      <section class="activity-panel" id="match">
+        <div class="activity-header">
+          <h3>Exercise 3: Matching (15 Pairs)</h3>
+          <button class="ghost-button check-btn" data-target="match">Check & Correct</button>
+        </div>
+        <div class="matching-board" id="match-questions"></div>
+      </section>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
 </html>
